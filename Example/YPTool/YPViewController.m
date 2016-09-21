@@ -7,6 +7,7 @@
 //
 
 #import "YPViewController.h"
+#import <YPTool/YPRefreshHeader.h>
 
 @interface YPViewController ()
 
@@ -14,9 +15,17 @@
 
 @implementation YPViewController
 
+-(void)loadView{
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    scrollView.backgroundColor = [UIColor greenColor];
+    self.view = scrollView;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    YPRefreshHeader *header = [YPRefreshHeader headerWithRefreshingTarget:self refreshingAction:nil];
+    [(UIScrollView *)self.view setMj_header:header];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
